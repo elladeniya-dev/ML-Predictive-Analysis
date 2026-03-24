@@ -16,11 +16,13 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 2,
    "id": "fb9a4bc6-2487-4459-b4b5-5f3dcdc0d0a3",
    "metadata": {},
    "outputs": [],
-   "source": []
+   "source": [
+    "from sklearn.linear_model import LogisticRegression"
+   ]
   },
   {
    "cell_type": "code",
@@ -28,7 +30,12 @@
    "id": "0c0336b6-286e-4e74-aba2-0e5aa1c17a4b",
    "metadata": {},
    "outputs": [],
-   "source": []
+   "source": [
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn.preprocessing import StandardScaler, LabelEncoder\n",
+    "from sklearn.metrics import (accuracy_score, precision_score,recall_score, f1_score,confusion_matrix, classification_report,\n",
+    "            roc_auc_score, roc_curve)"
+   ]
   }
  ],
  "metadata": {
