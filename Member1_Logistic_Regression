@@ -659,7 +659,7 @@
     "if duplicates > 0:\n",
     "    print(f\"\\n⚠️  {duplicates:,} duplicate rows found — need to remove!\")\n",
     "else:\n",
-    "    print(\"\\n✅ No duplicates found!\")"
+    "    print(\"\\n No duplicates found!\")"
    ]
   },
   {
@@ -698,16 +698,161 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 18,
    "id": "ce8e8296-bb69-4b3f-8ded-64ac955ab8ef",
    "metadata": {},
-   "outputs": [],
-   "source": []
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0         False\n",
+       "1         False\n",
+       "2         False\n",
+       "3         False\n",
+       "4         False\n",
+       "          ...  \n",
+       "119385    False\n",
+       "119386    False\n",
+       "119387    False\n",
+       "119388    False\n",
+       "119389    False\n",
+       "Length: 87396, dtype: bool"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "hotel_df.duplicated()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "789d52eb-8f52-4697-9a1e-7013c7c39bdf",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "np.int64(0)"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "hotel_df.duplicated().sum()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b3859350-708f-4d55-a415-245248bcf5cb",
+   "metadata": {},
+   "source": [
+    "### Null Values check"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "07fd0455-f68a-4894-a9fb-a653cc88dc5f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "hotel                                 0\n",
+       "is_canceled                           0\n",
+       "lead_time                             0\n",
+       "arrival_date_year                     0\n",
+       "arrival_date_month                    0\n",
+       "arrival_date_week_number              0\n",
+       "arrival_date_day_of_month             0\n",
+       "stays_in_weekend_nights               0\n",
+       "stays_in_week_nights                  0\n",
+       "adults                                0\n",
+       "children                              4\n",
+       "babies                                0\n",
+       "meal                                  0\n",
+       "country                             452\n",
+       "market_segment                        0\n",
+       "distribution_channel                  0\n",
+       "is_repeated_guest                     0\n",
+       "previous_cancellations                0\n",
+       "previous_bookings_not_canceled        0\n",
+       "reserved_room_type                    0\n",
+       "assigned_room_type                    0\n",
+       "booking_changes                       0\n",
+       "deposit_type                          0\n",
+       "agent                             12193\n",
+       "company                           82137\n",
+       "days_in_waiting_list                  0\n",
+       "customer_type                         0\n",
+       "adr                                   0\n",
+       "required_car_parking_spaces           0\n",
+       "total_of_special_requests             0\n",
+       "reservation_status                    0\n",
+       "reservation_status_date               0\n",
+       "dtype: int64"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "hotel_df.isnull().sum()"
+   ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "789d52eb-8f52-4697-9a1e-7013c7c39bdf",
+   "id": "47616625-36e3-422e-a4bc-52c5b260d503",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"=\" * 45)\n",
+    "print(\"HANDLING MISSING VALUES\")\n",
+    "print(\"=\" * 45)\n",
+    "\n",
+    "# 1. Drop agent and company — too many nulls\n",
+    "hotel_df = hotel_df.drop(columns=['agent', 'company'])\n",
+    "print(\" Dropped  : agent (12,193 nulls)\")\n",
+    "print(\" Dropped  : company (82,137 nulls)\")\n",
+    "\n",
+    "# 2. Fill children nulls with 0\n",
+    "hotel_df['children'] = hotel_df['children'].fillna(0)\n",
+    "print(\" Filled   : children → 0\")\n",
+    "\n",
+    "# 3. Fill country nulls with mode\n",
+    "hotel_df['country'] = hotel_df['country'].fillna(\n",
+    "                      hotel_df['country'].mode()[0])\n",
+    "print(\" Filled   : country → mode value\")\n",
+    "\n",
+    "# Verify — no nulls remaining\n",
+    "print()\n",
+    "print(\"=\" * 45)\n",
+    "print(\"VERIFY — NULL VALUES AFTER FIX\")\n",
+    "print(\"=\" * 45)\n",
+    "remaining = hotel_df.isnull().sum().sum()\n",
+    "print(f\"Remaining null values : {remaining}\")\n",
+    "\n",
+    "if remaining == 0:\n",
+    "    print(\" All missing values handled!\")\n",
+    "else:\n",
+    "    print(f\" {remaining} nulls still remaining!\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "fb448691-06fb-488f-ac37-3332bccb288f",
    "metadata": {},
    "outputs": [],
    "source": []
