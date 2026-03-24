@@ -26,15 +26,42 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 4,
    "id": "0c0336b6-286e-4e74-aba2-0e5aa1c17a4b",
    "metadata": {},
    "outputs": [],
    "source": [
     "from sklearn.model_selection import train_test_split\n",
     "from sklearn.preprocessing import StandardScaler, LabelEncoder\n",
-    "from sklearn.metrics import (accuracy_score, precision_score,recall_score, f1_score,confusion_matrix, classification_report,\n",
-    "            roc_auc_score, roc_curve)"
+    "from sklearn.metrics import (accuracy_score, precision_score,recall_score, f1_score,confusion_matrix, classification_report,roc_auc_score, roc_curve)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "78af2cc8-e115-4d44-9e3f-0881318a3ae8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "All libraries imported successfully!\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"All libraries imported successfully!\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3acc0abc-9c1b-4473-aeec-ae86f2ebed8f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "hotel_df = pd.read_csv('hotel_bookings.csv')"
    ]
   }
  ],
