@@ -663,9 +663,51 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "id": "dc536581-4f50-499c-843a-850f1dd687e5",
+   "metadata": {},
+   "source": [
+    "## Duplicate Row Remove "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "68af2150-620f-4cf9-afa6-53cbd468be2f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Before : 119,390 rows\n",
+      "After  : 87,396 rows\n",
+      "Removed: 31,994 duplicate rows\n"
+     ]
+    }
+   ],
+   "source": [
+    "before = len(hotel_df)\n",
+    "hotel_df = hotel_df.drop_duplicates()\n",
+    "after  = len(hotel_df)\n",
+    "\n",
+    "print(f\"Before : {before:,} rows\")\n",
+    "print(f\"After  : {after:,} rows\")\n",
+    "print(f\"Removed: {before - after:,} duplicate rows\")"
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": null,
-   "id": "f892356c-d941-477c-973b-61ddf90ff8a2",
+   "id": "ce8e8296-bb69-4b3f-8ded-64ac955ab8ef",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "789d52eb-8f52-4697-9a1e-7013c7c39bdf",
    "metadata": {},
    "outputs": [],
    "source": []
