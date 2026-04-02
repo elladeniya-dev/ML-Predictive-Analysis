@@ -1,0 +1,30 @@
+# --- Jupyter Notebook Specifics ---
+# This folder stores autosave checkpoints
+.ipynb_checkpoints/
+
+# If you use the Jupyter Lab/Notebook 'Export to HTML/PDF' features
+*.html
+*.pdf
+
+# --- Python General ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Environments ---
+# It is best practice to ignore your virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# --- Data and Logs ---
+# Ignore large data files (CSV, JSON, etc.) if they shouldn't be in version control
+# *.csv
+# *.json
+# *.log
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
